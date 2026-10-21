@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Prepare a separate Asyncwright model distribution under `io.github.sjacek.jasyncapi`
+  with Jackson 2.22.4, Kotlin 2.1.21, local repository installation and embedded provenance.
+- Include upstream attribution NOTICE in distribution `.2`; local `.1` remains untouched.
+
 ### Fixed
 
 - Propagate deserialization errors from object maps, lists, bindings and component schemas

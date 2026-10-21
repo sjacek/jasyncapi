@@ -5,8 +5,8 @@
 
     <parent>
         <artifactId>asyncapi</artifactId>
-        <groupId>com.asyncapi</groupId>
-        <version>1.0.0-RC4</version>
+        <groupId>io.github.sjacek.jasyncapi</groupId>
+        <version>1.0.0-RC4-asyncwright.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -55,6 +55,19 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/..</directory>
+                <targetPath>META-INF</targetPath>
+                <includes>
+                    <include>LICENSE</include>
+                    <include>NOTICE</include>
+                </includes>
+            </resource>
+        </resources>
         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
     </build>

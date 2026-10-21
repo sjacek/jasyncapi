@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.asyncapi</groupId>
+    <groupId>io.github.sjacek.jasyncapi</groupId>
     <artifactId>asyncapi</artifactId>
-    <version>1.0.0-RC4</version>
+    <version>1.0.0-RC4-asyncwright.2</version>
 
     <!-- Project Information -->
     <name>AsyncAPI</name>
     <inceptionYear>2020</inceptionYear>
-    <url>https://github.com/asyncapi/java-asyncapi</url>
+    <url>https://github.com/sjacek/jasyncapi</url>
     <description>
         <![CDATA[
         Building the future of event-driven architecture. Open source tools to easily build and maintain your event-driven architecture.
@@ -37,8 +37,8 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/asyncapi/java-asyncapi</url>
-        <connection>scm:git:https://github.com/asyncapi/jasyncapi.git</connection>
+        <url>https://github.com/sjacek/jasyncapi</url>
+        <connection>scm:git:https://github.com/sjacek/jasyncapi.git</connection>
         <tag>HEAD</tag>
     </scm>
 
@@ -49,8 +49,8 @@
     </modules>
 
     <properties>
-        <kotlin.version>1.9.23</kotlin.version>
-        <jackson.version>2.17.0</jackson.version>
+        <kotlin.version>2.1.21</kotlin.version>
+        <jackson.version>2.22.4</jackson.version>
         <lombok.version>1.18.32</lombok.version>
         <junit5.version>5.10.2</junit5.version>
         <dokka.version>1.7.0</dokka.version>
