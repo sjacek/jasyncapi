@@ -4291,11 +4291,9 @@
                   "person/*/updated"
                 ]
               },
-              "topic": {
-                "topicSubscriptions": [
-                  "person/*/updated"
-                ]
-              }
+              "topicSubscriptions": [
+                "person/*/updated"
+              ]
             }
           ],
           "bindingVersion": "0.3.0"
@@ -4455,11 +4453,9 @@
                       "person/*/updated"
                     ]
                   },
-                  "topic": {
-                    "topicSubscriptions": [
-                      "person/*/updated"
-                    ]
-                  }
+                  "topicSubscriptions": [
+                    "person/*/updated"
+                  ]
                 }
               ],
               "bindingVersion": "0.3.0"
@@ -4618,11 +4614,9 @@
                       "person/*/updated"
                     ]
                   },
-                  "topic": {
-                    "topicSubscriptions": [
-                      "person/*/updated"
-                    ]
-                  }
+                  "topicSubscriptions": [
+                    "person/*/updated"
+                  ]
                 }
               ],
               "bindingVersion": "0.3.0"
@@ -4819,11 +4813,9 @@
                   "person/*/updated"
                 ]
               },
-              "topic": {
-                "topicSubscriptions": [
-                  "person/*/updated"
-                ]
-              }
+              "topicSubscriptions": [
+                "person/*/updated"
+              ]
             }
           ],
           "bindingVersion": "0.3.0"
@@ -4983,11 +4975,9 @@
                       "person/*/updated"
                     ]
                   },
-                  "topic": {
-                    "topicSubscriptions": [
-                      "person/*/updated"
-                    ]
-                  }
+                  "topicSubscriptions": [
+                    "person/*/updated"
+                  ]
                 }
               ],
               "bindingVersion": "0.3.0"
@@ -5146,11 +5136,9 @@
                       "person/*/updated"
                     ]
                   },
-                  "topic": {
-                    "topicSubscriptions": [
-                      "person/*/updated"
-                    ]
-                  }
+                  "topicSubscriptions": [
+                    "person/*/updated"
+                  ]
                 }
               ],
               "bindingVersion": "0.3.0"
@@ -5164,20 +5152,6 @@
             "ws": {
               "$ref": "#/components/operationBindings/ws"
             }
-          },
-          "messages": [
-            {
-              "$ref": "#/components/messages/message 1"
-            },
-            {
-              "$ref": "#/components/messages/message 2"
-            },
-            {
-              "$ref": "#/components/messages/message 3"
-            }
-          ],
-          "reply": {
-            "$ref": "#/components/replies/reply"
           }
         },
         {
@@ -7316,11 +7290,9 @@
                   "person/*/updated"
                 ]
               },
-              "topic": {
-                "topicSubscriptions": [
-                  "person/*/updated"
-                ]
-              }
+              "topicSubscriptions": [
+                "person/*/updated"
+              ]
             }
           ],
           "bindingVersion": "0.3.0"
@@ -7479,11 +7451,9 @@
                   "person/*/updated"
                 ]
               },
-              "topic": {
-                "topicSubscriptions": [
-                  "person/*/updated"
-                ]
-              }
+              "topicSubscriptions": [
+                "person/*/updated"
+              ]
             }
           ],
           "bindingVersion": "0.3.0"
@@ -8267,11 +8237,9 @@
               "person/*/updated"
             ]
           },
-          "topic": {
-            "topicSubscriptions": [
-              "person/*/updated"
-            ]
-          }
+          "topicSubscriptions": [
+            "person/*/updated"
+          ]
         }
       ],
       "bindingVersion": "0.3.0"

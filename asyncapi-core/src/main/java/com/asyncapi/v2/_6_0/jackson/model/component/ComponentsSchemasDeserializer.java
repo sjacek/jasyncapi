@@ -9,6 +9,8 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -34,32 +36,21 @@ public class ComponentsSchemasDeserializer extends JsonDeserializer<Object> {
 
         Map<String, Object> parameters = new HashMap<>();
 
-        map.fieldNames().forEachRemaining(
-                fieldName -> {
-                    /*
-                        Problem:
-                          Both, Reference class and Schema class have $ref field.
-                          So, this is only reason why I receive next exception:
-                          "com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException:
-                            Unrecognized field "title" (class com.asyncapi.v2._6_0.model.Reference),
-                            not marked as ignorable (one known property: "$ref"])"
-                          in case when Schema contains $ref.
-                        Solution:
-                         Try to deserialize reference. In case of exception, try to deserialize it as given ObjectType. In case of
-                         one more exception, throw it.
-                        TODO: Think how to improve.
-                     */
-                    try {
-                        parameters.put(fieldName, chooseKnownPojo(map.get(fieldName), objectCodec));
-                    } catch (IOException ignore) {
-                        try {
-                            parameters.put(fieldName, readAsObject(map.get(fieldName), objectCodec));
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+        for (Map.Entry<String, JsonNode> entry : map.properties()) {
+            String fieldName = entry.getKey();
+            try {
+                Object value;
+                try {
+                    value = chooseKnownPojo(entry.getValue(), objectCodec);
+                } catch (UnrecognizedPropertyException referenceMismatch) {
+                    // A schema can contain $ref alongside fields not supported by Reference.
+                    value = readAsObject(entry.getValue(), objectCodec);
                 }
-        );
+                parameters.put(fieldName, value);
+            } catch (IOException exception) {
+                throw JsonMappingException.wrapWithPath(exception, parameters, fieldName);
+            }
+        }
 
         return parameters;
     }

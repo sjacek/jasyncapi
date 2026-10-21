@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,15 +25,15 @@ public abstract class ListOfReferencesOrObjectsDeserializer<ObjectType> extends 
 
         List<Object> traits = new ArrayList<>();
 
-        node.forEach(
-                traitsValue -> {
-                    try {
-                        traits.add(chooseKnownPojo(traitsValue, objectCodec));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-        );
+        int index = 0;
+        for (JsonNode traitsValue : node) {
+            try {
+                traits.add(chooseKnownPojo(traitsValue, objectCodec));
+            } catch (IOException exception) {
+                throw JsonMappingException.wrapWithPath(exception, traits, index);
+            }
+            index++;
+        }
 
         return traits;
     }

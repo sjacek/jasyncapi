@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- Propagate deserialization errors from object maps, lists, bindings and component schemas
+  instead of printing errors to stderr and returning incomplete models.
+- Include the map entry key or list index in mapping error paths while preserving
+  supported reference and schema representations.
+- Correct unrelated Solace and operation-trait errors in invalid-extension fixtures
+  so their assertions continue to test the intended root-level error.
+
 ## [1.0.0-RC4] - 2025-04-30
 
 ### Added

@@ -186,8 +186,7 @@
                 "accessType" : "exclusive",
                 "maxMsgSpoolSize" : "1,500",
                 "maxTtl" : "60"
-              },
-              "topic" : null
+              }
             }, {
               "destinationType" : "queue",
               "deliveryMode" : "persistent",
@@ -198,9 +197,7 @@
                 "maxMsgSpoolSize" : null,
                 "maxTtl" : null
               },
-              "topic" : {
-                "topicSubscriptions" : [ "person/*/updated" ]
-              }
+              "topicSubscriptions": [ "person/*/updated" ]
             } ],
             "bindingVersion" : "0.3.0"
           },
@@ -323,11 +320,9 @@
                         "person/*/updated"
                       ]
                     },
-                    "topic": {
-                      "topicSubscriptions": [
-                        "person/*/updated"
-                      ]
-                    }
+                    "topicSubscriptions": [
+                      "person/*/updated"
+                    ]
                   }
                 ],
                 "bindingVersion": "0.3.0"
@@ -431,8 +426,7 @@
                 "accessType" : "exclusive",
                 "maxMsgSpoolSize" : "1,500",
                 "maxTtl" : "60"
-              },
-              "topic" : null
+              }
             }, {
               "destinationType" : "queue",
               "deliveryMode" : "persistent",
@@ -443,9 +437,7 @@
                 "maxMsgSpoolSize" : null,
                 "maxTtl" : null
               },
-              "topic" : {
-                "topicSubscriptions" : [ "person/*/updated" ]
-              }
+              "topicSubscriptions": [ "person/*/updated" ]
             } ],
             "bindingVersion" : "0.3.0"
           },
@@ -568,11 +560,9 @@
                         "person/*/updated"
                       ]
                     },
-                    "topic": {
-                      "topicSubscriptions": [
-                        "person/*/updated"
-                      ]
-                    }
+                    "topicSubscriptions": [
+                      "person/*/updated"
+                    ]
                   }
                 ],
                 "bindingVersion": "0.3.0"
@@ -1258,11 +1248,9 @@
                     "person/*/updated"
                   ]
                 },
-                "topic": {
-                  "topicSubscriptions": [
-                    "person/*/updated"
-                  ]
-                }
+                "topicSubscriptions": [
+                  "person/*/updated"
+                ]
               }
             ],
             "bindingVersion": "0.3.0"
@@ -1651,8 +1639,7 @@
             "accessType" : "exclusive",
             "maxMsgSpoolSize" : "1,500",
             "maxTtl" : "60"
-          },
-          "topic" : null
+          }
         }, {
           "destinationType" : "queue",
           "deliveryMode" : "persistent",
@@ -1663,9 +1650,7 @@
             "maxMsgSpoolSize" : null,
             "maxTtl" : null
           },
-          "topic" : {
-            "topicSubscriptions" : [ "person/*/updated" ]
-          }
+          "topicSubscriptions": [ "person/*/updated" ]
         } ],
         "bindingVersion" : "0.3.0"
       },

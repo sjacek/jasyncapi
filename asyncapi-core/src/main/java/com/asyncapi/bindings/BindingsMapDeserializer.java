@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -31,15 +32,14 @@ public abstract class BindingsMapDeserializer extends JsonDeserializer<Map<Strin
 
         Map<String, Object> bindings = new HashMap<>();
 
-        node.fieldNames().forEachRemaining(
-                fieldName -> {
-                    try {
-                        bindings.put(fieldName, chooseKnownPojo(fieldName, node.get(fieldName), objectCodec));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-        );
+        for (Map.Entry<String, JsonNode> entry : node.properties()) {
+            String fieldName = entry.getKey();
+            try {
+                bindings.put(fieldName, chooseKnownPojo(fieldName, entry.getValue(), objectCodec));
+            } catch (IOException exception) {
+                throw JsonMappingException.wrapWithPath(exception, bindings, fieldName);
+            }
+        }
 
         return bindings;
     }
