@@ -6,16 +6,16 @@
 
     <groupId>io.github.sjacek.jasyncapi</groupId>
     <artifactId>asyncapi</artifactId>
-    <version>1.0.0-RC4-asyncwright.2</version>
+    <version>1.0.0-RC4-asyncwright.3</version>
 
     <!-- Project Information -->
-    <name>AsyncAPI</name>
+    <name>jasyncapi model for Asyncwright</name>
     <inceptionYear>2020</inceptionYear>
     <url>https://github.com/sjacek/jasyncapi</url>
     <description>
         <![CDATA[
-        Building the future of event-driven architecture. Open source tools to easily build and maintain your event-driven architecture.
-        All powered by the AsyncAPI specification, the industry standard for defining asynchronous APIs.
+        Asyncwright distribution of the AsyncAPI Initiative's jasyncapi model, with deserialization fixes.
+        Original Java packages, Apache-2.0 licensing and upstream attribution are preserved.
         ]]>
     </description>
     <organization>
@@ -23,6 +23,11 @@
         <url>https://www.asyncapi.com/</url>
     </organization>
     <developers>
+        <developer>
+            <id>sjacek</id>
+            <url>https://github.com/sjacek</url>
+            <roles><role>Fork distribution maintainer</role></roles>
+        </developer>
         <developer>
             <name>Pavel Bodiachevskii</name>
             <url>https://github.com/Pakisan</url>
@@ -39,6 +44,7 @@
     <scm>
         <url>https://github.com/sjacek/jasyncapi</url>
         <connection>scm:git:https://github.com/sjacek/jasyncapi.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/sjacek/jasyncapi.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -55,6 +61,8 @@
         <junit5.version>5.10.2</junit5.version>
         <dokka.version>1.7.0</dokka.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Preparing a Central bundle never uploads unless explicitly overridden by the maintainer. -->
+        <central.skipUpload>true</central.skipUpload>
 
         <!-- Build -->
         <maven-toolchains-plugin.version>3.2.0</maven-toolchains-plugin.version>
@@ -134,29 +142,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
-    <!-- Dokka lives here -->
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jcenter</id>
-            <name>JCenter</name>
-            <url>https://jcenter.bintray.com/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
 
     <build>
         <plugins>
@@ -245,33 +230,41 @@
                     </toolchains>
                 </configuration>
             </plugin>
-            <!-- Plugins for release cycle -->
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.14</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>3.2.7</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>central-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.12.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>false</autoPublish>
+                            <skipUpload>${central.skipUpload}</skipUpload>
+                            <waitUntil>validated</waitUntil>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.7</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals><goal>sign</goal></goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

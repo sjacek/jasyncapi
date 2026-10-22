@@ -4,8 +4,8 @@ This branch distributes the unchanged Java model from fork commit
 `05116f0d99f9e3f3c1b7d1aa8491f120364acf91` under separate Maven coordinates:
 
 ```text
-io.github.sjacek.jasyncapi:asyncapi:1.0.0-RC4-asyncwright.2       (parent POM)
-io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.2  (model jar)
+io.github.sjacek.jasyncapi:asyncapi:1.0.0-RC4-asyncwright.3       (parent POM)
+io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.3  (model jar)
 ```
 
 The distribution aligns Jackson to 2.22.4 and Kotlin to 2.1.21, the combination used for
@@ -35,5 +35,33 @@ Pass that repository explicitly to the Asyncwright build:
 ./gradlew.bat check assemble -PasyncwrightModelRepository=C:/path/to/model-repository
 ```
 
-Public hosting, signing and release automation remain separate work before a public
-Asyncwright release. No release or upstream pull request is created by this setup.
+Version `.3` prepares Maven Central publishing metadata, source/Javadoc artifacts and a
+`central-release` profile using Central Publishing Maven Plugin 0.12.0. It replaces the
+inherited OSSRH/Nexus configuration; model Java sources are unchanged. The new version
+avoids replacing previously installed `.2` artifacts with different POMs or provenance.
+
+Prepare locally without uploading:
+
+```powershell
+./tools/prepare-release.ps1 -Unsigned
+python tools/verify-release-bundle.py --allow-unsigned
+```
+
+`prepare-release.ps1` cleans old staging/signatures, runs tests and packages a Central bundle with `central.skipUpload=true`
+explicitly enforced, and skips installation into the user's Maven Local repository.
+`-Unsigned` is for verification only. Without it, configure a real GPG key externally;
+the signed bundle still stays local. The manual preparation workflow uses unsigned mode,
+has no publication secrets and never deploys remotely. Inspect `target/central-publishing/central-bundle.zip`.
+GitHub's manual workflow entry requires the workflow file on the repository's default branch;
+the local preparation command works independently of that repository setup.
+The verifier checks both POMs, JARs, checksums and provenance; `--gpg PATH` additionally
+checks all five detached signatures using the configured keyring.
+
+Before a later authorized release, verify the Central namespace `io.github.sjacek.jasyncapi`,
+configure the `central` server token in private Maven settings and configure the release GPG
+key/passphrase outside the repository. Use an immutable distribution commit and review the
+bundle. Only an explicitly authorized Maven invocation with profile `central-release` and
+`'-Dcentral.skipUpload=false'` uploads. `autoPublish=false` then leaves final release to the
+maintainer in Central Portal. Neither upload nor remote validation has been performed here.
+Do not upload verification bundles signed with a disposable test key, or overwrite a
+published version. See the [official Central instructions](https://central.sonatype.org/publish/publish-portal-maven/).

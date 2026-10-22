@@ -19,7 +19,7 @@ if ($Toolchains) { $common += @('-t', [System.IO.Path]::GetFullPath($Toolchains)
 Push-Location $distributionRoot
 try {
     if (-not $SkipBuild) {
-        & $Maven @common test jar:jar
+        & $Maven @common verify
         if ($LASTEXITCODE -ne 0) { throw 'Fork build or tests failed.' }
     }
     if (-not (Test-Path -LiteralPath $jar)) { throw 'Build the distribution before installing it.' }

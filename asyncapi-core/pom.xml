@@ -6,11 +6,12 @@
     <parent>
         <artifactId>asyncapi</artifactId>
         <groupId>io.github.sjacek.jasyncapi</groupId>
-        <version>1.0.0-RC4-asyncwright.2</version>
+        <version>1.0.0-RC4-asyncwright.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>asyncapi-core</artifactId>
+    <name>jasyncapi core model for Asyncwright</name>
     <packaging>jar</packaging>
 
     <dependencies>

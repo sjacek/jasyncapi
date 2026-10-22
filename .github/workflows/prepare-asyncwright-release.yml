@@ -1,0 +1,38 @@
+name: Prepare Asyncwright model (no upload)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        # Inputs are declared in actions/checkout@v4/action.yml; IDE metadata resolution can miss them.
+        #noinspection UndefinedParamsPresent
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        # Inputs are declared in actions/setup-java@v4/action.yml.
+        #noinspection UndefinedParamsPresent
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Configure the test toolchain
+        run: |
+          mkdir -p "$HOME/.m2"
+          cat > "$HOME/.m2/toolchains.xml" <<EOF
+          <toolchains><toolchain><type>jdk</type><provides><version>21</version></provides><configuration><jdkHome>$JAVA_HOME</jdkHome></configuration></toolchain></toolchains>
+          EOF
+      - name: Test and prepare an unsigned verification bundle
+        run: pwsh -File tools/prepare-release.ps1 -Unsigned -Maven mvn
+      - name: Verify bundle contents and checksums
+        run: python tools/verify-release-bundle.py --allow-unsigned
+      - uses: actions/upload-artifact@v4
+        # Inputs are declared in actions/upload-artifact@v4/action.yml.
+        #noinspection UndefinedParamsPresent
+        with:
+          name: model-unsigned-verification-bundle
+          path: target/central-publishing/central-bundle.zip
+          retention-days: 7
