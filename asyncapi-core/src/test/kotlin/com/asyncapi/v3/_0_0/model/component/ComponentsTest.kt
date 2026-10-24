@@ -190,10 +190,10 @@ class ComponentsTest: SerDeTest<Components>() {
                                 Reference("#/components/messageTraits/messageTrait")
                         )
                 ))
-                .serverBindings(ServerTest.bindings())
-                .channelBindings(ChannelTest.bindings())
-                .operationBindings(OperationTest.bindings())
-                .messageBindings(MessageTestWithSchema.bindings())
+                .serverBindings(namedBindingMaps(ServerTest.bindings()))
+                .channelBindings(namedBindingMaps(ChannelTest.bindings()))
+                .operationBindings(namedBindingMaps(OperationTest.bindings()))
+                .messageBindings(namedBindingMaps(MessageTestWithSchema.bindings()))
                 .externalDocs(mapOf(
                         Pair("externalDoc 1", ExternalDocumentationTest().build()),
                         Pair("externalDoc 2",
@@ -209,5 +209,11 @@ class ComponentsTest: SerDeTest<Components>() {
                 ))
                 .build()
     }
+
+    /** Components contain named protocol maps; aliases remain references. */
+    private fun namedBindingMaps(bindings: Map<String, Any>): Map<String, Any> =
+            bindings.mapValues { (protocol, binding) ->
+                if (binding is Reference) binding else mapOf(protocol to binding)
+            }
 
 }
