@@ -45,3 +45,28 @@ external references or traits in Asyncwright.
 The source fix is on `fix/binding-map-references`. Local distribution testing uses
 `build/binding-map-references-distribution` and `.4-SNAPSHOT`, without replacing public `.3`.
 No new release is published by this change.
+
+## IDE analysis of serialization fixtures
+
+The JSON files below exercise model serialization/deserialization, not validation of a
+complete AsyncAPI application or reference resolution:
+
+- `asyncapi-core/src/test/resources/json/v3/3.0.0/model/asyncapi.json`
+- `asyncapi-core/src/test/resources/json/v3/3.0.0/model/asyncapi - extended.json`
+- `asyncapi-core/src/test/resources/json/v3/3.0.0/model/asyncapi - wrongly extended.json`
+- the corresponding `components/components*.json` files in the same resource directory.
+
+Some references are intentionally left without targets in these mapping fixtures. The
+`wrongly extended` inputs must retain invalid extension names because the tests require
+mapping to fail. Positive/extended fixtures compare typed values and, in two tests, exact
+JSON text; they do not assert full document conformance. Repairing references or changing
+data to satisfy an IDE's AsyncAPI schema would change the condition under test.
+
+For IntelliJ's editor, select **Highlight → Syntax** in the inspection widget for these
+files, retaining JSON syntax checks. When running project-wide **Inspect Code**, use a
+local analysis scope that excludes these specific data files, or a local inspection profile
+that disables only their schema/reference inspections. Keep analysis enabled for Java and
+Kotlin tests and for actual AsyncAPI contracts. These IDE preferences are local; they do
+not require committing `.idea` files or adding suppressions inside JSON fixtures.
+
+See [IntelliJ file highlighting and inspection settings](https://www.jetbrains.com/help/idea/disabling-and-enabling-inspections.html#change-the-highlighting-level-for-a-file).
