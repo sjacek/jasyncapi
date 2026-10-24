@@ -8,6 +8,11 @@
 ## Overview
 JVM-friendly bindings for AsyncAPI. It allows you to read or write specifications for your asynchronous API  through code
 
+The development fix for named binding maps and retained whole-map references is documented
+in [binding-map references](docs/binding-map-references.md). Resolution remains a separate
+responsibility; existing Map-based getters are preserved. See also the
+[separate Asyncwright distribution](ASYNCWRIGHT-DISTRIBUTION.md).
+
 Hints:
 - If you are working with AsyncAPI specification in JetBrains IDE, check out our [AsyncAPI - IDEA plugin](https://github.com/asyncapi/jasyncapi-idea-plugin)
 - If you are working with AsyncAPI specification in VSCode, check out our [AsyncAPI - VSCode plugin](https://github.com/asyncapi/vs-asyncapi-preview)

@@ -1,17 +1,26 @@
 # Asyncwright model distribution
 
-This branch distributes the unchanged Java model from fork commit
-`05116f0d99f9e3f3c1b7d1aa8491f120364acf91` under separate Maven coordinates:
+This development branch starts from fork commit
+`05116f0d99f9e3f3c1b7d1aa8491f120364acf91` and includes the uncommitted binding-map
+reference patch from `fix/binding-map-references`. Its separate Maven coordinates are:
 
 ```text
-io.github.sjacek.jasyncapi:asyncapi:1.0.0-RC4-asyncwright.3       (parent POM)
-io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.3  (model jar)
+io.github.sjacek.jasyncapi:asyncapi:1.0.0-RC4-asyncwright.4-SNAPSHOT       (parent POM)
+io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.4-SNAPSHOT  (model jar)
 ```
 
 The distribution aligns Jackson to 2.22.4 and Kotlin to 2.1.21, the combination used for
 the regression suite. Packages remain `com.asyncapi`. The Apache-2.0 license and original
 authorship are retained; LICENSE, NOTICE and source provenance are included
-in the model jar. Distribution metadata is separate from the upstream bug-fix branch.
+in the model jar. Distribution metadata is separate from the model-fix branch.
+Whole `bindings` references retain their original `$ref` string in the existing Map getter;
+named `components.*Bindings` entries now hold typed protocol maps or `Reference` aliases.
+No resolution is performed by the model. See [binding-map semantics](docs/binding-map-references.md).
+
+This snapshot has not been uploaded. `modelSourceCommit` identifies the base, and
+`modelSourceState=working-tree` explicitly marks the pending patch. Before a future release,
+commit the source changes, synchronize the distribution, replace this provenance with the
+immutable source commit and choose stable versions. The public `.3` artifacts remain unchanged.
 The RC4 base has no NOTICE file; the distribution includes the attribution from upstream
 `master` at `6c2a325f0826f26cfe26003af208ce15e5e9bbbe`. Local `.1` was superseded by `.2`
 to include this notice without overwriting the already installed artifact.
@@ -35,7 +44,7 @@ Pass that repository explicitly to the Asyncwright build:
 ./gradlew.bat check assemble -PasyncwrightModelRepository=C:/path/to/model-repository
 ```
 
-Version `.3` prepares Maven Central publishing metadata, source/Javadoc artifacts and a
+Public version `.3` introduced Maven Central publishing metadata, source/Javadoc artifacts and a
 `central-release` profile using Central Publishing Maven Plugin 0.12.0. It replaces the
 inherited OSSRH/Nexus configuration; model Java sources are unchanged. The new version
 avoids replacing previously installed `.2` artifacts with different POMs or provenance.

@@ -162,14 +162,11 @@ public class Server extends ExtendableObject {
     private Object externalDocs;
 
     /**
-     * A map where the keys describe the name of the protocol and the values describe protocol-specific definitions
-     * for the server.
-     * <p>
-     * MUST be one of:
-     * <ul>
-     *     <li>{@link ServerBinding}</li>
-     *     <li>{@link Reference}</li>
-     * </ul>
+     * Protocol names mapped to typed {@link ServerBinding} values, or a reference to this whole map.
+     * A whole-map {@link Reference} is retained as a single {@code "$ref" -> URI string}
+     * entry to preserve the existing Map getter. Its siblings are ignored and its URI is
+     * never resolved by this model. Consumers must resolve the map before selecting a
+     * protocol; an empty concrete map remains empty. An absent or null property stays null.
      */
     @Nullable
     @JsonDeserialize(using = ServerBindingsDeserializer.class)

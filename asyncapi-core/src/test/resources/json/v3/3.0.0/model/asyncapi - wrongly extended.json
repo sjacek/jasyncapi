@@ -13184,144 +13184,190 @@
       "amqp": {
         "$ref": "#/components/serverBindings/amqp"
       },
-      "amqp1": {},
-      "anypointmq": {},
-      "googlepubsub": {},
-      "http": {},
+      "amqp1": {
+        "amqp1": {}
+      },
+      "anypointmq": {
+        "anypointmq": {}
+      },
+      "googlepubsub": {
+        "googlepubsub": {}
+      },
+      "http": {
+        "http": {}
+      },
       "ibmmq": {
-        "groupId": "PRODCLSTR1",
-        "ccdtQueueManagerName": "*",
-        "multiEndpointServer": false,
-        "heartBeatInterval": 300,
-        "cipherSpec": "ANY_TLS12_OR_HIGHER",
-        "bindingVersion": "0.1.0"
+        "ibmmq": {
+          "groupId": "PRODCLSTR1",
+          "ccdtQueueManagerName": "*",
+          "multiEndpointServer": false,
+          "heartBeatInterval": 300,
+          "cipherSpec": "ANY_TLS12_OR_HIGHER",
+          "bindingVersion": "0.1.0"
+        }
       },
-      "jms": {},
+      "jms": {
+        "jms": {}
+      },
       "kafka": {
-        "schemaRegistryUrl": "https://my-schema-registry.com",
-        "schemaRegistryVendor": "confluent",
-        "bindingVersion": "0.5.0"
+        "kafka": {
+          "schemaRegistryUrl": "https://my-schema-registry.com",
+          "schemaRegistryVendor": "confluent",
+          "bindingVersion": "0.5.0"
+        }
       },
-      "mercure": {},
+      "mercure": {
+        "mercure": {}
+      },
       "mqtt": {
-        "clientId": "guest",
-        "cleanSession": true,
-        "lastWill": {
-          "topic": "/last-wills",
-          "qos": 2,
-          "message": "Guest gone offline.",
-          "retain": false
-        },
-        "keepAlive": 60,
-        "bindingVersion": "0.1.0"
+        "mqtt": {
+          "clientId": "guest",
+          "cleanSession": true,
+          "lastWill": {
+            "topic": "/last-wills",
+            "qos": 2,
+            "message": "Guest gone offline.",
+            "retain": false
+          },
+          "keepAlive": 60,
+          "bindingVersion": "0.1.0"
+        }
       },
       "mqtt5": {
-        "sessionExpiryInterval": 60,
-        "bindingVersion": "0.2.0"
+        "mqtt5": {
+          "sessionExpiryInterval": 60,
+          "bindingVersion": "0.2.0"
+        }
       },
-      "nats": {},
+      "nats": {
+        "nats": {}
+      },
       "pulsar": {
-        "tenant": "contoso",
-        "bindingVersion": "0.1.0"
+        "pulsar": {
+          "tenant": "contoso",
+          "bindingVersion": "0.1.0"
+        }
       },
-      "redis": {},
-      "sns": {},
+      "redis": {
+        "redis": {}
+      },
+      "sns": {
+        "sns": {}
+      },
       "solace": {
-        "msgVpn": "solace.private.net",
-        "bindingVersion": "0.3.0"
+        "solace": {
+          "msgVpn": "solace.private.net",
+          "bindingVersion": "0.3.0"
+        }
       },
-      "sqs": {},
-      "stomp": {},
-      "ws": {}
+      "sqs": {
+        "sqs": {}
+      },
+      "stomp": {
+        "stomp": {}
+      },
+      "ws": {
+        "ws": {}
+      }
     },
     "channelBindings": {
       "amqp": {
-        "is": "routingKey",
-        "queue": {
-          "name": "my-queue-name",
-          "durable": true,
-          "exclusive": true,
-          "autoDelete": false,
-          "vhost": "/"
-        },
-        "exchange": {
-          "name": "myExchange",
-          "type": "topic",
-          "durable": true,
-          "autoDelete": false,
-          "vhost": "/"
-        },
-        "bindingVersion": "0.2.0"
+        "amqp": {
+          "is": "routingKey",
+          "queue": {
+            "name": "my-queue-name",
+            "durable": true,
+            "exclusive": true,
+            "autoDelete": false,
+            "vhost": "/"
+          },
+          "exchange": {
+            "name": "myExchange",
+            "type": "topic",
+            "durable": true,
+            "autoDelete": false,
+            "vhost": "/"
+          },
+          "bindingVersion": "0.2.0"
+        }
       },
       "amqp1": {
         "$ref": "#/components/channelBindings/amqp1"
       },
       "anypointmq": {
-        "destination": "user-signup-exchg",
-        "destinationType": "exchange",
-        "bindingVersion": "0.0.1"
+        "anypointmq": {
+          "destination": "user-signup-exchg",
+          "destinationType": "exchange",
+          "bindingVersion": "0.0.1"
+        }
       },
       "googlepubsub": {
-        "topic": "projects/your-project/topics/topic-proto-schema",
-        "messageRetentionDuration": "86400s",
-        "messageStoragePolicy": {
-          "allowedPersistenceRegions": [
-            "us-central1",
-            "us-central2",
-            "us-east1",
-            "us-east4",
-            "us-east5",
-            "us-east7",
-            "us-south1",
-            "us-west1",
-            "us-west2",
-            "us-west3",
-            "us-west4"
-          ]
-        },
-        "schemaSettings": {
-          "encoding": "binary",
-          "name": "projects/your-project/schemas/message-proto"
-        },
-        "bindingVersion": "0.1.0"
+        "googlepubsub": {
+          "topic": "projects/your-project/topics/topic-proto-schema",
+          "messageRetentionDuration": "86400s",
+          "messageStoragePolicy": {
+            "allowedPersistenceRegions": [
+              "us-central1",
+              "us-central2",
+              "us-east1",
+              "us-east4",
+              "us-east5",
+              "us-east7",
+              "us-south1",
+              "us-west1",
+              "us-west2",
+              "us-west3",
+              "us-west4"
+            ]
+          },
+          "schemaSettings": {
+            "encoding": "binary",
+            "name": "projects/your-project/schemas/message-proto"
+          },
+          "bindingVersion": "0.1.0"
+        }
       },
       "http": {
         "$ref": "#/components/channelBindings/http"
       },
       "ibmmq": {
-        "destinationType": "topic",
-        "queue": {
-          "objectName": "message",
-          "isPartitioned": false,
-          "exclusive": true
-        },
-        "topic": {
-          "string": "messages",
-          "objectName": "message",
-          "durablePermitted": true,
-          "lastMsgRetained": true
-        },
-        "maxMsgLength": 1024,
-        "bindingVersion": "0.1.0"
+        "ibmmq": {
+          "destinationType": "topic",
+          "queue": {
+            "objectName": "message",
+            "isPartitioned": false,
+            "exclusive": true
+          },
+          "topic": {
+            "string": "messages",
+            "objectName": "message",
+            "durablePermitted": true,
+            "lastMsgRetained": true
+          },
+          "maxMsgLength": 1024,
+          "bindingVersion": "0.1.0"
+        }
       },
       "jms": {
         "$ref": "#/components/channelBindings/jms"
       },
       "kafka": {
-        "topic": "my-specific-topic-name",
-        "partitions": 20,
-        "replicas": 3,
-        "topicConfiguration": {
-          "cleanup.policy": [
-            "delete",
-            "compact"
-          ],
-          "retention.ms": 604800000,
-          "retention.bytes": 1000000000,
-          "delete.retention.ms": 86400000,
-          "max.message.bytes": 1048588
-        },
-        "bindingVersion": "0.5.0"
+        "kafka": {
+          "topic": "my-specific-topic-name",
+          "partitions": 20,
+          "replicas": 3,
+          "topicConfiguration": {
+            "cleanup.policy": [
+              "delete",
+              "compact"
+            ],
+            "retention.ms": 604800000,
+            "retention.bytes": 1000000000,
+            "delete.retention.ms": 86400000,
+            "max.message.bytes": 1048588
+          },
+          "bindingVersion": "0.5.0"
+        }
       },
       "mercure": {
         "$ref": "#/components/channelBindings/mercure"
@@ -13336,20 +13382,22 @@
         "$ref": "#/components/channelBindings/nats"
       },
       "pulsar": {
-        "namespace": "staging",
-        "persistence": "persistent",
-        "compaction": 1000,
-        "geo-replication": [
-          "us-east1",
-          "us-west1"
-        ],
-        "retention": {
-          "time": 7,
-          "size": 1000
-        },
-        "ttl": 360,
-        "deduplication": false,
-        "bindingVersion": "0.1.0"
+        "pulsar": {
+          "namespace": "staging",
+          "persistence": "persistent",
+          "compaction": 1000,
+          "geo-replication": [
+            "us-east1",
+            "us-west1"
+          ],
+          "retention": {
+            "time": 7,
+            "size": 1000
+          },
+          "ttl": 360,
+          "deduplication": false,
+          "bindingVersion": "0.1.0"
+        }
       },
       "redis": {
         "$ref": "#/components/channelBindings/redis"
@@ -13367,22 +13415,24 @@
         "$ref": "#/components/channelBindings/stomp"
       },
       "ws": {
-        "method": "GET",
-        "query": {
-          "type": "object",
-          "properties": {
-            "ref": {
-              "type": "string",
-              "description": "Referral."
+        "ws": {
+          "method": "GET",
+          "query": {
+            "type": "object",
+            "properties": {
+              "ref": {
+                "type": "string",
+                "description": "Referral."
+              }
             }
-          }
-        },
-        "headers": {
-          "type": "object",
-          "properties": {
-            "Authentication": {
-              "type": "string",
-              "description": "Authentication token"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Authentication": {
+                "type": "string",
+                "description": "Authentication token"
+              }
             }
           }
         }
@@ -13390,21 +13440,23 @@
     },
     "operationBindings": {
       "amqp": {
-        "expiration": 100000,
-        "userId": "guest",
-        "cc": [
-          "user.logs"
-        ],
-        "priority": 10,
-        "deliveryMode": 2,
-        "mandatory": false,
-        "bcc": [
-          "external.audit"
-        ],
-        "replyTo": "user.signedup",
-        "timestamp": true,
-        "ack": false,
-        "bindingVersion": "0.2.0"
+        "amqp": {
+          "expiration": 100000,
+          "userId": "guest",
+          "cc": [
+            "user.logs"
+          ],
+          "priority": 10,
+          "deliveryMode": 2,
+          "mandatory": false,
+          "bcc": [
+            "external.audit"
+          ],
+          "replyTo": "user.signedup",
+          "timestamp": true,
+          "ack": false,
+          "bindingVersion": "0.2.0"
+        }
       },
       "amqp1": {
         "$ref": "#/components/operationBindings/amqp1"
@@ -13416,23 +13468,25 @@
         "$ref": "#/components/operationBindings/googlepubsub"
       },
       "http": {
-        "type": "request",
-        "method": "GET",
-        "query": {
-          "type": "object",
-          "required": [
-            "companyId"
-          ],
-          "properties": {
-            "companyId": {
-              "type": "number",
-              "minimum": 1,
-              "description": "The Id of the company."
-            }
+        "http": {
+          "type": "request",
+          "method": "GET",
+          "query": {
+            "type": "object",
+            "required": [
+              "companyId"
+            ],
+            "properties": {
+              "companyId": {
+                "type": "number",
+                "minimum": 1,
+                "description": "The Id of the company."
+              }
+            },
+            "additionalProperties": false
           },
-          "additionalProperties": false
-        },
-        "bindingVersion": "0.1.0"
+          "bindingVersion": "0.1.0"
+        }
       },
       "ibmmq": {
         "$ref": "#/components/operationBindings/ibmmq"
@@ -13441,34 +13495,40 @@
         "$ref": "#/components/operationBindings/jms"
       },
       "kafka": {
-        "groupId": {
-          "type": "string",
-          "enum": [
-            "myGroupId"
-          ]
-        },
-        "clientId": {
-          "type": "string",
-          "enum": [
-            "myClientId"
-          ]
-        },
-        "bindingVersion": "0.5.0"
+        "kafka": {
+          "groupId": {
+            "type": "string",
+            "enum": [
+              "myGroupId"
+            ]
+          },
+          "clientId": {
+            "type": "string",
+            "enum": [
+              "myClientId"
+            ]
+          },
+          "bindingVersion": "0.5.0"
+        }
       },
       "mercure": {
         "$ref": "#/components/operationBindings/mercure"
       },
       "mqtt": {
-        "qos": 2,
-        "retain": true,
-        "bindingVersion": "0.1.0"
+        "mqtt": {
+          "qos": 2,
+          "retain": true,
+          "bindingVersion": "0.1.0"
+        }
       },
       "mqtt5": {
         "$ref": "#/components/operationBindings/mqtt5"
       },
       "nats": {
-        "queue": "messages",
-        "bindingVersion": "0.1.0"
+        "nats": {
+          "queue": "messages",
+          "bindingVersion": "0.1.0"
+        }
       },
       "pulsar": {
         "$ref": "#/components/operationBindings/pulsar"
@@ -13480,33 +13540,35 @@
         "$ref": "#/components/operationBindings/sns"
       },
       "solace": {
-        "destinations": [
-          {
-            "destinationType": "queue",
-            "queue": {
-              "name": "CreatedHREvents",
-              "topicSubscriptions": [
-                "person/*/created"
-              ],
-              "accessType": "exclusive",
-              "maxMsgSpoolSize": "1,500",
-              "maxTtl": "60"
-            }
-          },
-          {
-            "destinationType": "queue",
-            "queue": {
-              "name": "UpdatedHREvents",
+        "solace": {
+          "destinations": [
+            {
+              "destinationType": "queue",
+              "queue": {
+                "name": "CreatedHREvents",
+                "topicSubscriptions": [
+                  "person/*/created"
+                ],
+                "accessType": "exclusive",
+                "maxMsgSpoolSize": "1,500",
+                "maxTtl": "60"
+              }
+            },
+            {
+              "destinationType": "queue",
+              "queue": {
+                "name": "UpdatedHREvents",
+                "topicSubscriptions": [
+                  "person/*/updated"
+                ]
+              },
               "topicSubscriptions": [
                 "person/*/updated"
               ]
-            },
-            "topicSubscriptions": [
-              "person/*/updated"
-            ]
-          }
-        ],
-        "bindingVersion": "0.3.0"
+            }
+          ],
+          "bindingVersion": "0.3.0"
+        }
       },
       "sqs": {
         "$ref": "#/components/operationBindings/sqs"
@@ -13520,73 +13582,87 @@
     },
     "messageBindings": {
       "amqp": {
-        "contentEncoding": "gzip",
-        "messageType": "user.signup",
-        "bindingVersion": "0.2.0"
+        "amqp": {
+          "contentEncoding": "gzip",
+          "messageType": "user.signup",
+          "bindingVersion": "0.2.0"
+        }
       },
       "amqp1": {
         "$ref": "#/components/messageBindings/amqp1"
       },
       "anypointmq": {
-        "headers": {
-          "type": "object",
-          "properties": {
-            "correlationId": {
-              "description": "Correlation ID set by application",
-              "type": "string"
+        "anypointmq": {
+          "headers": {
+            "type": "object",
+            "properties": {
+              "correlationId": {
+                "description": "Correlation ID set by application",
+                "type": "string"
+              }
             }
-          }
-        },
-        "bindingVersion": "0.0.1"
+          },
+          "bindingVersion": "0.0.1"
+        }
       },
       "googlepubsub": {
-        "schema": {
-          "name": "projects/your-project/schemas/message-avro",
-          "type": "avro"
-        },
-        "bindingVersion": "0.1.0"
+        "googlepubsub": {
+          "schema": {
+            "name": "projects/your-project/schemas/message-avro",
+            "type": "avro"
+          },
+          "bindingVersion": "0.1.0"
+        }
       },
       "http": {
-        "headers": {
-          "type": "object",
-          "properties": {
-            "Content-Type": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ]
+        "http": {
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string",
+                "enum": [
+                  "application/json"
+                ]
+              }
             }
-          }
-        },
-        "bindingVersion": "0.1.0"
+          },
+          "bindingVersion": "0.1.0"
+        }
       },
       "ibmmq": {
-        "type": "jms",
-        "description": "JMS stream message",
-        "headers": "Content-Type: application/json",
-        "expiry": 0,
-        "bindingVersion": "0.1.0"
+        "ibmmq": {
+          "type": "jms",
+          "description": "JMS stream message",
+          "headers": "Content-Type: application/json",
+          "expiry": 0,
+          "bindingVersion": "0.1.0"
+        }
       },
       "jms": {
         "$ref": "#/components/messageBindings/jms"
       },
       "kafka": {
-        "key": {
-          "type": "string",
-          "enum": [
-            "myKey"
-          ]
-        },
-        "schemaIdLocation": "payload",
-        "schemaIdPayloadEncoding": "apicurio-new",
-        "schemaLookupStrategy": "TopicIdStrategy",
-        "bindingVersion": "0.5.0"
+        "kafka": {
+          "key": {
+            "type": "string",
+            "enum": [
+              "myKey"
+            ]
+          },
+          "schemaIdLocation": "payload",
+          "schemaIdPayloadEncoding": "apicurio-new",
+          "schemaLookupStrategy": "TopicIdStrategy",
+          "bindingVersion": "0.5.0"
+        }
       },
       "mercure": {
         "$ref": "#/components/messageBindings/mercure"
       },
       "mqtt": {
-        "bindingVersion": "0.1.0"
+        "mqtt": {
+          "bindingVersion": "0.1.0"
+        }
       },
       "mqtt5": {
         "$ref": "#/components/messageBindings/mqtt5"

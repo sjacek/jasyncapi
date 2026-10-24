@@ -63,3 +63,4 @@ asyncapi-core/.project
 .vscode/settings.json
 asyncapi-core/.settings/org.eclipse.jdt.core.prefs
 .project
+/.idea/

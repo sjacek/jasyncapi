@@ -6,7 +6,7 @@
     <parent>
         <artifactId>asyncapi</artifactId>
         <groupId>io.github.sjacek.jasyncapi</groupId>
-        <version>1.0.0-RC4-asyncwright.3</version>
+        <version>1.0.0-RC4-asyncwright.4-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

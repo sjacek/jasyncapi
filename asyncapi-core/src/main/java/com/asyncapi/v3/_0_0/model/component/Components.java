@@ -19,10 +19,7 @@ import com.asyncapi.bindings.ChannelBinding;
 import com.asyncapi.bindings.MessageBinding;
 import com.asyncapi.bindings.OperationBinding;
 import com.asyncapi.bindings.ServerBinding;
-import com.asyncapi.bindings.ChannelBindingsDeserializer;
-import com.asyncapi.bindings.MessageBindingsDeserializer;
-import com.asyncapi.bindings.OperationBindingsDeserializer;
-import com.asyncapi.bindings.ServerBindingsDeserializer;
+import com.asyncapi.bindings.ComponentsBindingsDeserializer;
 import com.asyncapi.schemas.asyncapi.multiformat.MultiFormatSchema;
 import com.asyncapi.schemas.asyncapi.AsyncAPISchema;
 import com.asyncapi.schemas.asyncapi.security.v3.SecurityScheme;
@@ -223,51 +220,63 @@ public class Components extends ExtendableObject {
     private Map<String, Object> messageTraits;
 
     /**
-     * An object to hold reusable {@link ServerBinding} Objects.
+     * Named reusable server binding maps, whose protocol entries are {@link ServerBinding} Objects.
+     * Outer keys are reusable component names, not protocol identifiers. Each concrete
+     * entry contains a protocol map; an alias remains a Reference with its original URI.
+     * Resolution and cycle checks are the caller's responsibility. Empty maps stay empty.
      * MUST BE:
      * <ul>
-     *     <li>{@link ServerBinding}</li>
+     *     <li>Map of protocol names to {@link ServerBinding} Objects</li>
      *     <li>{@link Reference}</li>
      * </ul>
      */
     @Nullable
-    @JsonDeserialize(using = ServerBindingsDeserializer.class)
+    @JsonDeserialize(using = ComponentsBindingsDeserializer.Server.class)
     private Map<String, Object> serverBindings;
 
     /**
-     * An object to hold reusable {@link ChannelBinding} Objects.
+     * Named reusable channel binding maps, whose protocol entries are {@link ChannelBinding} Objects.
+     * Outer keys are reusable component names, not protocol identifiers. Each concrete
+     * entry contains a protocol map; an alias remains a Reference with its original URI.
+     * Resolution and cycle checks are the caller's responsibility. Empty maps stay empty.
      * MUST BE:
      * <ul>
-     *     <li>{@link ChannelBinding}</li>
+     *     <li>Map of protocol names to {@link ChannelBinding} Objects</li>
      *     <li>{@link Reference}</li>
      * </ul>
      */
     @Nullable
-    @JsonDeserialize(using = ChannelBindingsDeserializer.class)
+    @JsonDeserialize(using = ComponentsBindingsDeserializer.Channel.class)
     private Map<String, Object> channelBindings;
 
     /**
-     * An object to hold reusable {@link OperationBinding} Objects.
+     * Named reusable operation binding maps, whose protocol entries are {@link OperationBinding} Objects.
+     * Outer keys are reusable component names, not protocol identifiers. Each concrete
+     * entry contains a protocol map; an alias remains a Reference with its original URI.
+     * Resolution and cycle checks are the caller's responsibility. Empty maps stay empty.
      * MUST BE:
      * <ul>
-     *     <li>{@link OperationBinding}</li>
+     *     <li>Map of protocol names to {@link OperationBinding} Objects</li>
      *     <li>{@link Reference}</li>
      * </ul>
      */
     @Nullable
-    @JsonDeserialize(using = OperationBindingsDeserializer.class)
+    @JsonDeserialize(using = ComponentsBindingsDeserializer.Operation.class)
     private Map<String, Object> operationBindings;
 
     /**
-     * An object to hold reusable {@link MessageBinding} Objects.
+     * Named reusable message binding maps, whose protocol entries are {@link MessageBinding} Objects.
+     * Outer keys are reusable component names, not protocol identifiers. Each concrete
+     * entry contains a protocol map; an alias remains a Reference with its original URI.
+     * Resolution and cycle checks are the caller's responsibility. Empty maps stay empty.
      * MUST BE:
      * <ul>
-     *     <li>{@link MessageBinding}</li>
+     *     <li>Map of protocol names to {@link MessageBinding} Objects</li>
      *     <li>{@link Reference}</li>
      * </ul>
      */
     @Nullable
-    @JsonDeserialize(using = MessageBindingsDeserializer.class)
+    @JsonDeserialize(using = ComponentsBindingsDeserializer.Message.class)
     private Map<String, Object> messageBindings;
 
     /**
