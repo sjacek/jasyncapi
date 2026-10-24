@@ -1,8 +1,9 @@
 # Asyncwright model distribution
 
-This development branch starts from fork commit
-`05116f0d99f9e3f3c1b7d1aa8491f120364acf91` and includes the uncommitted binding-map
-reference patch from `fix/binding-map-references`. Its separate Maven coordinates are:
+This development branch distributes the binding-map reference fix from fork commit
+[`a6ac111a10f6e18fd26c7b4820bf262125054b66`](https://github.com/sjacek/jasyncapi/commit/a6ac111a10f6e18fd26c7b4820bf262125054b66)
+on `fix/binding-map-references`. Java sources and model tests match that immutable commit.
+Its separate Maven coordinates are:
 
 ```text
 io.github.sjacek.jasyncapi:asyncapi:1.0.0-RC4-asyncwright.4-SNAPSHOT       (parent POM)
@@ -17,10 +18,12 @@ Whole `bindings` references retain their original `$ref` string in the existing 
 named `components.*Bindings` entries now hold typed protocol maps or `Reference` aliases.
 No resolution is performed by the model. See [binding-map semantics](docs/binding-map-references.md).
 
-This snapshot has not been uploaded. `modelSourceCommit` identifies the base, and
-`modelSourceState=working-tree` explicitly marks the pending patch. Before a future release,
-commit the source changes, synchronize the distribution, replace this provenance with the
-immutable source commit and choose stable versions. The public `.3` artifacts remain unchanged.
+This snapshot has not been uploaded to Maven Central. `modelSourceCommit` identifies the
+committed model sources; the temporary `modelSourceState=working-tree` marker is removed.
+The distribution commit used by CI is a separate revision that also contains packaging
+metadata and dependency alignment. Before a future release, commit the distribution changes,
+pin the resulting distribution revision in CI and choose stable versions. The public `.3`
+artifacts remain unchanged. Test workflow uploads are CI artifacts, not Maven Central releases.
 The RC4 base has no NOTICE file; the distribution includes the attribution from upstream
 `master` at `6c2a325f0826f26cfe26003af208ce15e5e9bbbe`. Local `.1` was superseded by `.2`
 to include this notice without overwriting the already installed artifact.
