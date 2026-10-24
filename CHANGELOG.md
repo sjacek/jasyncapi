@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## 1.0.0-RC4-asyncwright.4 — prepared, not published
+
+### Fixed
+
+- Preserve references to whole server, channel, operation and message binding maps,
+  including bindings on trait model objects. The existing `Map<String, Object>` getters
+  retain the original URI as a single `$ref` entry.
+- Deserialize named `components.*Bindings` entries as protocol maps or `Reference` aliases.
+  This corrects the earlier flat interpretation of named component entries.
+- Propagate invalid binding values with the enclosing map key in the mapping error path.
+
+### Usage
+
+- Reference resolution remains the host's responsibility; the model never expands a `$ref`.
+  Rules and generators using Asyncwright should follow the map with its separate resolver
+  before selecting a protocol binding. See [binding-map semantics](docs/binding-map-references.md).
+- Java packages remain `com.asyncapi`; Apache-2.0 licensing and upstream NOTICE are preserved.
+  Provenance identifies source commit `a6ac111a10f6e18fd26c7b4820bf262125054b66`.
+- `.4` is prepared for Maven Central, but has not been uploaded or released. Existing `.3`
+  coordinates remain unchanged.
+
+## Earlier Asyncwright fork changes
+
+These changes were already included in the `.3` distribution.
+
 ### Changed
 
 - Prepare a separate Asyncwright model distribution under `io.github.sjacek.jasyncapi`
