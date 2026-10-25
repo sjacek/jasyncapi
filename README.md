@@ -8,10 +8,12 @@
 ## Overview
 JVM-friendly bindings for AsyncAPI. It allows you to read or write specifications for your asynchronous API  through code
 
-The development fix for named binding maps and retained whole-map references is documented
-in [binding-map references](docs/binding-map-references.md). Resolution remains a separate
-responsibility; existing Map-based getters are preserved. See also the
-[separate Asyncwright distribution](ASYNCWRIGHT-DISTRIBUTION.md).
+The Asyncwright fork distribution `io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.4`
+is published in Maven Central. It supports named binding maps and retained whole-map
+references; existing Map-based getters remain available and resolution stays separate.
+See [binding-map references](docs/binding-map-references.md) and the
+[distribution coordinates, provenance and release guide](ASYNCWRIGHT-DISTRIBUTION.md).
+The upstream README below retains the official `com.asyncapi` project information.
 
 Hints:
 - If you are working with AsyncAPI specification in JetBrains IDE, check out our [AsyncAPI - IDEA plugin](https://github.com/asyncapi/jasyncapi-idea-plugin)

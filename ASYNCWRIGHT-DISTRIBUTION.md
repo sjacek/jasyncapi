@@ -1,6 +1,7 @@
 # Asyncwright model distribution
 
-This development branch distributes the binding-map reference fix from fork commit
+This distribution is published in Maven Central as `.4` (2026-10-25), using the binding-map
+reference fix from fork commit
 [`a6ac111a10f6e18fd26c7b4820bf262125054b66`](https://github.com/sjacek/jasyncapi/commit/a6ac111a10f6e18fd26c7b4820bf262125054b66)
 on `fix/binding-map-references`. Java sources and model tests match that immutable commit.
 Its separate Maven coordinates are:
@@ -18,20 +19,31 @@ Whole `bindings` references retain their original `$ref` string in the existing 
 named `components.*Bindings` entries now hold typed protocol maps or `Reference` aliases.
 No resolution is performed by the model. See [binding-map semantics](docs/binding-map-references.md).
 
-Version `.4` is prepared with stable coordinates but has not been uploaded to Maven Central.
-`modelSourceCommit` identifies the committed model sources; no `modelSourceState` marker is
-needed. The distribution revision also contains packaging metadata and dependency alignment.
-After the maintainer commits and pushes this release preparation, pin its full distribution
-SHA in Asyncwright CI. The previous `5fe89cf4` pin contains `.4-SNAPSHOT` and cannot supply
-stable `.4`. Review the new CI result before integration or publication. The public `.3`
-artifacts remain unchanged. Test workflow uploads are CI artifacts, not Maven Central releases.
-See the [changelog](CHANGELOG.md) for the user-visible changes and model representation.
+The published parent POM, model JAR, sources, Javadoc, five GPG signatures and checksums
+were verified from Maven Central. Release distribution commit:
+`dac5a9703a9a0f82a7d25a2b78789e1d109da41d` on `build/asyncwright-distribution`.
+`modelSourceCommit` identifies the separate immutable model-source revision above;
+`distributionVersion` is `1.0.0-RC4-asyncwright.4`, with no working-tree marker.
+Original `.3` artifacts remain unchanged. See the [changelog](CHANGELOG.md) for upgrading.
+
+Consume the model from Maven Central without a local repository:
+
+```groovy
+repositories { mavenCentral() }
+dependencies {
+    implementation 'io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.4'
+}
+```
+
+Asyncwright `0.1.1` declares this dependency itself. Documentation-only changes after
+publication do not change the release's distribution commit or its CI pin.
+
 The RC4 base has no NOTICE file; the distribution includes the attribution from upstream
 `master` at `6c2a325f0826f26cfe26003af208ce15e5e9bbbe`. Local `.1` was superseded by `.2`
 to include this notice without overwriting the already installed artifact.
 
-With JDK 21 configured in Maven Toolchains, build, test and install into an explicit local
-file repository:
+For model development or HTTP publication-test fixtures, configure JDK 21 in Maven
+Toolchains, then build, test and install into an explicit local file repository:
 
 ```powershell
 ./tools/install-local.ps1 -Repository C:/path/to/model-repository
@@ -54,7 +66,7 @@ Public version `.3` introduced Maven Central publishing metadata, source/Javadoc
 inherited OSSRH/Nexus configuration; model Java sources are unchanged. The new version
 avoids replacing previously installed `.2` artifacts with different POMs or provenance.
 
-Prepare locally without uploading:
+For a future version, change the version and provenance first, then prepare locally without uploading:
 
 ```powershell
 ./tools/prepare-release.ps1 -Unsigned
@@ -76,6 +88,6 @@ configure the `central` server token in private Maven settings and configure the
 key/passphrase outside the repository. Use an immutable distribution commit and review the
 bundle. Only an explicitly authorized Maven invocation with profile `central-release` and
 `'-Dcentral.skipUpload=false'` uploads. `autoPublish=false` then leaves final release to the
-maintainer in Central Portal. Neither upload nor remote validation has been performed here.
+maintainer in Central Portal. The `.4` release has already completed validation and publication; this procedure is for a new version.
 Do not upload verification bundles signed with a disposable test key, or overwrite a
 published version. See the [official Central instructions](https://central.sonatype.org/publish/publish-portal-maven/).

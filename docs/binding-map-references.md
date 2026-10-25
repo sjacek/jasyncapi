@@ -42,11 +42,11 @@ malformed protocol siblings of a whole-map reference are ignored. A host must va
 document and apply its reference policy separately. These model-only tests do not enable
 external references or traits in Asyncwright.
 
-The source fix is on `fix/binding-map-references`. The distribution branch
-`build/binding-map-references-distribution` now prepares stable
-`1.0.0-RC4-asyncwright.4`, without replacing public `.3`. Use an explicit local model
-repository until `.4` is published; see [distribution preparation](../ASYNCWRIGHT-DISTRIBUTION.md).
-No new release has been published.
+This fix is published in `1.0.0-RC4-asyncwright.4` in Maven Central and used by
+Asyncwright `0.1.1`. The source commit is `a6ac111a10f6e18fd26c7b4820bf262125054b66`;
+the released distribution is `dac5a9703a9a0f82a7d25a2b78789e1d109da41d` on
+`build/asyncwright-distribution`. Public consumers need no local model repository.
+Earlier `.3` remains unchanged. See the [distribution guide](../ASYNCWRIGHT-DISTRIBUTION.md).
 
 ## IDE analysis of serialization fixtures
 

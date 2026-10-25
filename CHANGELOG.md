@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## 1.0.0-RC4-asyncwright.4 — prepared, not published
+## [1.0.0-RC4-asyncwright.4] - 2026-10-25
 
 ### Fixed
 
@@ -25,8 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   before selecting a protocol binding. See [binding-map semantics](docs/binding-map-references.md).
 - Java packages remain `com.asyncapi`; Apache-2.0 licensing and upstream NOTICE are preserved.
   Provenance identifies source commit `a6ac111a10f6e18fd26c7b4820bf262125054b66`.
-- `.4` is prepared for Maven Central, but has not been uploaded or released. Existing `.3`
-  coordinates remain unchanged.
+- `.4` is available from Maven Central, including its parent POM, model JAR, sources,
+  Javadoc, signatures and checksums. Consumers need no local model repository.
+  Earlier `.3` coordinates remain unchanged.
 
 ## Earlier Asyncwright fork changes
 
@@ -256,3 +257,5 @@ https://github.com/asyncapi/jasyncapi/pull/31
 ### Added
 
 - AsyncAPI 2.0.0
+
+[1.0.0-RC4-asyncwright.4]: https://repo.maven.apache.org/maven2/io/github/sjacek/jasyncapi/asyncapi-core/1.0.0-RC4-asyncwright.4/
