@@ -10,12 +10,12 @@ intentional API/ABI change: recompile affected model consumers. See
 [Kafka topic configuration](docs/kafka-topic-configuration.md).
 
 The .5 coordinates are reserved in these POMs; no artifacts have been published.
-Source changes are not committed yet, so `modelSourceCommit` denotes the last committed
-source base `a6ac111a10f6e18fd26c7b4820bf262125054b66` and
-`modelSourceState=working-tree` explicitly marks the uncommitted changes.
-Before release, commit the source branch, replace that SHA with the actual model-fix
-commit and remove the working-tree marker in a separate distribution commit.
-Do not describe the current candidate as having final immutable provenance.
+The model sources and tests match immutable source commit
+[`6de0c02e884a9336f727a6cc797ac8eb304c0e87`](https://github.com/sjacek/jasyncapi/commit/6de0c02e884a9336f727a6cc797ac8eb304c0e87)
+on `fix/kafka-topic-configuration`, verified on GitHub.
+`modelSourceCommit` records that SHA; the working-tree marker has been removed.
+The distribution still needs its provenance update committed and checked in CI
+before a separately authorized release.
 
 Build/test and unsigned preparation commands below remain local. Use a new preview
 repository directory for each candidate whose bytes change; the install script prevents

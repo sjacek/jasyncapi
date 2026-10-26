@@ -16,8 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Retention getters, setters and builder methods now use `Long`. The all-arguments
   constructors include the additional-property map; recompile consumers of these APIs.
   See [Kafka topic configuration](docs/kafka-topic-configuration.md).
-- Provenance currently records the committed source base and `modelSourceState=working-tree`.
-  Final source SHA and release verification are pending the maintainer's commits.
+- Model provenance identifies immutable source commit `6de0c02e884a9336f727a6cc797ac8eb304c0e87`.
+  The working-tree marker has been removed; CI and release verification remain pending.
 
 ## [1.0.0-RC4-asyncwright.4] - 2026-10-25
 
