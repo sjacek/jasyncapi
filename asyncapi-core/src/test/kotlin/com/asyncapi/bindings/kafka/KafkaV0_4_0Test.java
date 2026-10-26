@@ -15,6 +15,8 @@ import org.junit.jupiter.api.Nested;
 
 import java.util.List;
 
+// Preserve the upstream binding-version naming used by shared test fixtures.
+@SuppressWarnings("NewClassNamingConvention")
 @DisplayName("0.4.0")
 public class KafkaV0_4_0Test {
 
@@ -28,9 +30,9 @@ public class KafkaV0_4_0Test {
                                 KafkaChannelTopicCleanupPolicy.DELETE,
                                 KafkaChannelTopicCleanupPolicy.COMPACT
                         ))
-                        .retentionMs(604_800_000)
-                        .retentionBytes(1_000_000_000)
-                        .deleteRetentionMs(86_400_000)
+                        .retentionMs(604_800_000L)
+                        .retentionBytes(1_000_000_000L)
+                        .deleteRetentionMs(86_400_000L)
                         .maxMessageBytes(1_048_588)
                         .build()
                 )

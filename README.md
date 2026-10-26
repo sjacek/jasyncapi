@@ -12,6 +12,10 @@ The development fix for named binding maps and retained whole-map references is 
 in [binding-map references](docs/binding-map-references.md). Resolution remains a separate
 responsibility; existing Map-based getters are preserved.
 
+The development Kafka topic-configuration changes (64-bit retention and additional JSON
+properties) are documented in [Kafka topic configuration](docs/kafka-topic-configuration.md).
+They include an intentional API change from the published Asyncwright model .4.
+
 Hints:
 - If you are working with AsyncAPI specification in JetBrains IDE, check out our [AsyncAPI - IDEA plugin](https://github.com/asyncapi/jasyncapi-idea-plugin)
 - If you are working with AsyncAPI specification in VSCode, check out our [AsyncAPI - VSCode plugin](https://github.com/asyncapi/vs-asyncapi-preview)

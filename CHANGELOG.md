@@ -9,12 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Preserve 64-bit Kafka retention values in channel binding versions 0.4.0 and 0.5.0.
+- Preserve additional topic configuration properties as JSON data, including explicit
+  nulls and reference-like objects, without requiring an x- prefix.
+
 - Propagate deserialization errors from object maps, lists, bindings and component schemas
   instead of printing errors to stderr and returning incomplete models.
 - Include the map entry key or list index in mapping error paths while preserving
   supported reference and schema representations.
 - Correct unrelated Solace and operation-trait errors in invalid-extension fixtures
   so their assertions continue to test the intended root-level error.
+
+### Changed
+
+- Kafka retention getters, setters and builder methods now use `Long` instead of `Integer`.
+  The all-arguments constructors include the additional-property map. Consumers using
+  these APIs must recompile; see [Kafka topic configuration](docs/kafka-topic-configuration.md).
 
 ## [1.0.0-RC4] - 2025-04-30
 

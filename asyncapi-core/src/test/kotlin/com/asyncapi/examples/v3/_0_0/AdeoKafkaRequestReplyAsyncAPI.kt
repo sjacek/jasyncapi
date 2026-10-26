@@ -130,7 +130,7 @@ class AdeoKafkaRequestReplyAsyncAPI: AbstractExampleValidationTest() {
                                         .partitions(3)
                                         .topicConfiguration(KafkaChannelTopicConfiguration.builder()
                                                 .cleanupPolicy(listOf(KafkaChannelTopicCleanupPolicy.DELETE))
-                                                .retentionMs(60000000)
+                                                .retentionMs(60000000L)
                                                 .build()
                                         )
                                         .build()
