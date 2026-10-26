@@ -8,6 +8,10 @@
 ## Overview
 JVM-friendly bindings for AsyncAPI. It allows you to read or write specifications for your asynchronous API  through code
 
+This branch prepares unpublished Asyncwright model `1.0.0-RC4-asyncwright.5` with
+[Kafka topic-configuration fixes](docs/kafka-topic-configuration.md).
+The change includes a deliberate API/ABI break; the released .4 below is unchanged.
+
 The Asyncwright fork distribution `io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.4`
 is published in Maven Central. It supports named binding maps and retained whole-map
 references; existing Map-based getters remain available and resolution stays separate.

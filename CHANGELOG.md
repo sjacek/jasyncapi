@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Asyncwright model .5 candidate
+
+- Prepare `1.0.0-RC4-asyncwright.5`, not published yet, for the Asyncwright 0.2.0 work.
+- Retain 64-bit Kafka retention values in channel binding versions 0.4.0 and 0.5.0.
+- Preserve additional topic configuration properties as JSON data, including nulls,
+  arrays and reference-like objects, without requiring an x- prefix.
+- Retention getters, setters and builder methods now use `Long`. The all-arguments
+  constructors include the additional-property map; recompile consumers of these APIs.
+  See [Kafka topic configuration](docs/kafka-topic-configuration.md).
+- Provenance currently records the committed source base and `modelSourceState=working-tree`.
+  Final source SHA and release verification are pending the maintainer's commits.
+
 ## [1.0.0-RC4-asyncwright.4] - 2026-10-25
 
 ### Fixed

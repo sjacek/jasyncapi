@@ -1,5 +1,29 @@
 # Asyncwright model distribution
 
+## Unpublished .5 candidate
+
+The `build/kafka-model-distribution` branch prepares
+`io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.5` from
+the `fix/kafka-topic-configuration` source branch. Both topic-configuration versions
+(0.4.0 and 0.5.0) retain 64-bit retention and additional JSON values. This is an
+intentional API/ABI change: recompile affected model consumers. See
+[Kafka topic configuration](docs/kafka-topic-configuration.md).
+
+The .5 coordinates are reserved in these POMs; no artifacts have been published.
+Source changes are not committed yet, so `modelSourceCommit` denotes the last committed
+source base `a6ac111a10f6e18fd26c7b4820bf262125054b66` and
+`modelSourceState=working-tree` explicitly marks the uncommitted changes.
+Before release, commit the source branch, replace that SHA with the actual model-fix
+commit and remove the working-tree marker in a separate distribution commit.
+Do not describe the current candidate as having final immutable provenance.
+
+Build/test and unsigned preparation commands below remain local. Use a new preview
+repository directory for each candidate whose bytes change; the install script prevents
+overwriting an already installed version with different bytes.
+The published model .4 and Asyncwright 0.1.1 CI pin remain unchanged during R1.
+
+## Published .4 baseline
+
 This distribution is published in Maven Central as `.4` (2026-10-25), using the binding-map
 reference fix from fork commit
 [`a6ac111a10f6e18fd26c7b4820bf262125054b66`](https://github.com/sjacek/jasyncapi/commit/a6ac111a10f6e18fd26c7b4820bf262125054b66)
