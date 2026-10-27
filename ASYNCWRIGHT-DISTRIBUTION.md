@@ -1,52 +1,51 @@
 # Asyncwright model distribution
 
-## Prepared stable .5 distribution
+## Published .5 distribution
 
-The `build/kafka-model-distribution` branch prepares
-`io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.5` from
-the `fix/kafka-topic-configuration` source branch. Both topic-configuration versions
-(0.4.0 and 0.5.0) retain 64-bit retention and additional JSON values. This is an
-intentional API/ABI change: recompile affected model consumers. See
-[Kafka topic configuration](docs/kafka-topic-configuration.md).
+Model **1.0.0-RC4-asyncwright.5** was published to Maven Central on **2026-10-27**
+and is used by released **Asyncwright 0.2.0**. Consumers need no source checkout,
+Maven Local or explicit file repository:
 
-The .5 coordinates are reserved in these POMs; no artifacts have been published.
-The model sources and tests match immutable source commit
-[`6de0c02e884a9336f727a6cc797ac8eb304c0e87`](https://github.com/sjacek/jasyncapi/commit/6de0c02e884a9336f727a6cc797ac8eb304c0e87)
-on `fix/kafka-topic-configuration`, verified on GitHub.
-`modelSourceCommit` records that SHA; the working-tree marker has been removed.
-Distribution commit `421e78bfab6c70d261bc5126aca252f11eb6263f` passed 4284 model tests,
-the eight-pair Asyncwright Gradle/JDK matrix and the F4 contracts preview. This
-branch now prepares the stable .5 release documentation and local Central bundle.
-These packaging changes need their own commit/push and CI pin before integration;
-model-source provenance continues to identify 6de0c02e.
-
-The model is not yet published. Its parent/core POMs, binary, sources and Javadoc
-must be verified together. Prepare with JDK 21 and Maven Toolchains:
-
-```powershell
-./tools/prepare-release.ps1 -Unsigned
-python tools/verify-release-bundle.py --allow-unsigned
-./tools/install-local.ps1 -Repository C:/path/to/fresh-model-repository -SkipBuild
+```groovy
+repositories { mavenCentral() }
+dependencies {
+    implementation 'io.github.sjacek.jasyncapi:asyncapi-core:1.0.0-RC4-asyncwright.5'
+}
 ```
 
-Unsigned preparation runs the tests, forces central.skipUpload=true and disables
-Maven Local installation. It creates target/central-publishing/central-bundle.zip
-for inspection only; the bundle needs five real GPG signatures for a future release.
-Use a fresh file repository when packaging bytes change under these unpublished
-coordinates. Do not replace any previously staged model or published .4 artifacts.
-Asyncwright 0.2.0 uses this .5 model. Retention API changes require recompilation;
-Java package names, Apache-2.0 licensing and upstream NOTICE remain preserved.
+The parent POM is `io.github.sjacek.jasyncapi:asyncapi:1.0.0-RC4-asyncwright.5`.
+Parent/core POMs, model binary, sources, Javadoc, five GPG signatures and twenty
+checksums were verified from Central. All 30 public files match the signed bundle
+(SHA-256 `c002279919b20c9da72748b009bad9bb6b4d1592b51cd2a844dd6d6c5377faac`).
+The model JAR SHA-256 is
+`c4b06d0c3ab596c56bdfc4428073f918a0c1ce69e69fb728a858a2e4ad363694`.
 
-Local preparation on 2026-10-27 passed on JDK 21 / Maven 3.9.16: 4284 tests,
-zero failures/errors/skips, and an unsigned Central bundle with all five artifacts
-and twenty valid checksums. The packaged provenance and Kafka source sample match
-the immutable source commit. No signatures or upload were performed; this is
-preparation evidence, not a Maven Central availability claim.
+Release distribution commit:
+`e07d9e1ded75711a5180ea435b0ce02c27a89de8` on `build/asyncwright-distribution`.
+The immutable model-source commit is
+[`6de0c02e884a9336f727a6cc797ac8eb304c0e87`](https://github.com/sjacek/jasyncapi/commit/6de0c02e884a9336f727a6cc797ac8eb304c0e87)
+from `fix/kafka-topic-configuration`. These are separate references:
+`modelSourceCommit` records the source SHA; `distributionVersion` records `.5`,
+with no working-tree marker. Public artifacts preserve Java packages `com.asyncapi`,
+Apache-2.0 licensing, upstream authorship, LICENSE and NOTICE.
 
-Build/test and unsigned preparation commands below remain local. Use a new preview
-repository directory for each candidate whose bytes change; the install script prevents
-overwriting an already installed version with different bytes.
-The published model .4 and Asyncwright 0.1.1 CI pin remain unchanged during R1.
+Both Kafka topic-configuration versions (0.4.0 and 0.5.0) retain 64-bit retention
+and additional JSON values. Retention APIs now use Long, and all-arguments constructors
+include the additional-property map: recompile affected model consumers and extensions.
+Document validation still rejects extra topic configuration in binding 0.4.0.
+See [Kafka topic configuration](docs/kafka-topic-configuration.md) and the [changelog](CHANGELOG.md).
+This is model support, not acceptance of the full Kafka/Avro/Registry profile.
+
+Release preparation on JDK 21 / Maven 3.9.16 passed **4284 model tests**, with no
+failures, errors or skips. The final distribution passed all eight Asyncwright
+Gradle/JDK matrix combinations; the public plugin consumer resolved this exact .5
+JAR and passed custom extensions, bundled DTO generation, compilation and cache checks.
+
+Earlier model .4 / plugin 0.1.1 coordinates remain unchanged. Documentation-only
+changes after release do not move release provenance or the Asyncwright CI pin.
+For future model development, use a new version before changing distributed bytes,
+and a fresh explicit file repository for preview candidates. Build/test tooling below
+is local and does not publish unless upload is explicitly authorized and enabled.
 
 ## Published .4 baseline
 
@@ -76,7 +75,7 @@ were verified from Maven Central. Release distribution commit:
 `distributionVersion` is `1.0.0-RC4-asyncwright.4`, with no working-tree marker.
 Original `.3` artifacts remain unchanged. See the [changelog](CHANGELOG.md) for upgrading.
 
-Consume the model from Maven Central without a local repository:
+To reproduce the historical .4 baseline from Maven Central:
 
 ```groovy
 repositories { mavenCentral() }

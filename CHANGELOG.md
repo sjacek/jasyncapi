@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0-RC4-asyncwright.5] — prepared, not published
+## [1.0.0-RC4-asyncwright.5] - 2026-10-27
 
-- Prepared stable distribution for Asyncwright 0.2.0; Maven Central publication is pending.
+- Available from Maven Central for Asyncwright 0.2.0, including parent/core POMs,
+  model JAR, sources, Javadoc, GPG signatures and checksums. No local repository is required.
 - Retain 64-bit Kafka retention values in channel binding versions 0.4.0 and 0.5.0.
 - Preserve additional topic configuration properties as JSON data, including nulls,
   arrays and reference-like objects, without requiring an x- prefix.
@@ -18,7 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   See [Kafka topic configuration](docs/kafka-topic-configuration.md).
 - Model provenance identifies immutable source commit `6de0c02e884a9336f727a6cc797ac8eb304c0e87`.
   There is no working-tree marker. The source distribution passed 4284 model tests
-  and the Asyncwright compatibility matrix; final release packaging is verified separately.
+  and the Asyncwright compatibility matrix. Published files match the signed release
+  bundle; all five signatures and twenty checksums have been verified from Central.
 
 ## [1.0.0-RC4-asyncwright.4] - 2026-10-25
 
