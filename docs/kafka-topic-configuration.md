@@ -1,7 +1,7 @@
 # Kafka topic configuration
 
-The development fix covers Kafka channel bindings **0.4.0 and 0.5.0**. It is prepared
-for Asyncwright model **1.0.0-RC4-asyncwright.5**, which is not published yet.
+The prepared stable model **1.0.0-RC4-asyncwright.5** covers Kafka channel bindings
+**0.4.0 and 0.5.0** for Asyncwright 0.2.0. Maven Central publication is pending.
 The published model .4 retains its original API and behavior.
 
 Model preservation and document validity are separate concerns. Asyncwright's pinned
