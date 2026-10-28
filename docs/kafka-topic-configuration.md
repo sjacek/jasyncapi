@@ -1,7 +1,7 @@
 # Kafka topic configuration
 
 The published model **1.0.0-RC4-asyncwright.5** covers Kafka channel bindings
-**0.4.0 and 0.5.0** for Asyncwright 0.2.0. Both are available from public repositories;
+**0.4.0 and 0.5.0** for Asyncwright 0.2.1 and 0.2.0. Both are available from public repositories;
 the model resolves from Maven Central without a local repository.
 The published model .4 retains its original API and behavior.
 

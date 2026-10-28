@@ -3,7 +3,7 @@
 ## Published .5 distribution
 
 Model **1.0.0-RC4-asyncwright.5** was published to Maven Central on **2026-10-27**
-and is used by released **Asyncwright 0.2.0**. Consumers need no source checkout,
+and is used by released **Asyncwright 0.2.1** and 0.2.0. Consumers need no source checkout,
 Maven Local or explicit file repository:
 
 ```groovy
@@ -40,6 +40,11 @@ Release preparation on JDK 21 / Maven 3.9.16 passed **4284 model tests**, with n
 failures, errors or skips. The final distribution passed all eight Asyncwright
 Gradle/JDK matrix combinations; the public plugin consumer resolved this exact .5
 JAR and passed custom extensions, bundled DTO generation, compilation and cache checks.
+
+Asyncwright **0.2.1**, released on **2026-10-28**, reuses these exact model artifacts
+and the same immutable CI pin. Its bundled-schema classloader fix is in the plugin;
+it does not change model APIs, binaries or provenance. The public 0.2.1/.5 consumers
+passed extension, DTO compilation, failure cleanup and cache checks.
 
 Earlier model .4 / plugin 0.1.1 coordinates remain unchanged. Documentation-only
 changes after release do not move release provenance or the Asyncwright CI pin.
